@@ -1,0 +1,47 @@
+* {box-sizing: border-box;}
+
+
+#indx-nav{
+    color: antiquewhite;
+    
+}
+#purchase-nav{
+    color: antiquewhite;
+    pointer-events: none;
+    cursor: default;
+}
+
+
+#purchase-add-new a{
+    text-decoration: none;
+    font-size: 24px;
+}
+
+ #pop-up{
+    display: none;
+} 
+#pop-up-form{
+    
+    position: fixed;
+    width: 30%;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-container div{
+    padding: 10px;
+    display: block;
+}
+
+.form-container div label{
+    display: block;
+}
+
+.form-container div #btn{
+    background-color: green;
+    color: aliceblue;
+    border: none;
+}
