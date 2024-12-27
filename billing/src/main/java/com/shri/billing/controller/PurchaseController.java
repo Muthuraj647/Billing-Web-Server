@@ -1,33 +1,31 @@
 package com.shri.billing.controller;
 
 import com.shri.billing.dto.LookUpDto;
+import com.shri.billing.dto.PurchaseDto;
 import com.shri.billing.entity.Purchase;
 import com.shri.billing.service.impl.PurchaseServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/purchase")
 public class PurchaseController {
     @Autowired private PurchaseServiceImplementation purchaseServiceImplementation;
 
-    @GetMapping(value = "purchase")
-    ResponseEntity<Object> savePurchase(){
-        System.out.printf("Hello World");
-        List<LookUpDto> look =new ArrayList<>();
-        LookUpDto lo =new LookUpDto("1","2","3","4");
-        //look.add(lo);
-//        purchase = purchaseServiceImplementation.savePurchase(purchase);
-        String s = "Sample";
-        return new ResponseEntity<>(lo,HttpStatus.OK);
+    @PostMapping(value = "purchases")
+    ResponseEntity<List<PurchaseDto>> savePurchases(@RequestBody List<PurchaseDto> purchases){
+        purchases = purchaseServiceImplementation.savePurchases(purchases);
+        return new ResponseEntity<>(purchases,HttpStatus.OK);
+    }
+    @GetMapping
+    ResponseEntity<List<PurchaseDto>> getAllPurchase(@RequestParam(required = false) Long id,
+                                                     @RequestParam(required = false) String search){
+        List<PurchaseDto> purchaseList =purchaseServiceImplementation.getAllPurchase(id,search);
+        return new ResponseEntity<>(purchaseList,HttpStatus.OK);
     }
 }
