@@ -12,12 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LookUp {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+//    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String value;
     private String description;
-    @Transient
-    private String groupName;
+//    private String groupName;
 
     public LookUp(String id) {
         this.id = id;
