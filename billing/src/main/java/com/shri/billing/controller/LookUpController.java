@@ -5,10 +5,7 @@ import com.shri.billing.service.impl.LookUpServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +15,7 @@ public class LookUpController {
 
     @Autowired private LookUpServiceImplementation lookUpServiceImplementation;
 
+    @CrossOrigin(origins = "*")
     @GetMapping(value="/look-up")
     ResponseEntity<List<LookUpDto>> getLookUpByGroupNames(@RequestParam(required = false) String groupNames){
         List<LookUpDto> lookUps=lookUpServiceImplementation.getAllLookUpGroupNames(groupNames);

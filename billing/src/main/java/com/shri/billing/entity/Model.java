@@ -1,28 +1,27 @@
 package com.shri.billing.entity;
 
-import com.shri.billing.lookup.Item;
+import com.shri.billing.lookup.Brand;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Proxy;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Proxy(lazy = false)
 public class Model {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-
-    @JoinColumn(name = "item_id",referencedColumnName = "id")
+    private Long basePercentage;
+    @JoinColumn(name = "brand_id",referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Item item;
-
+    private Brand brand;
+    private String name;
+    private String itemId;
     private String model;
     private String spec;
     private String label;
-    private Long basePercentage;
 
     public Model(Long id) {
         this.id = id;
@@ -44,12 +43,20 @@ public class Model {
         this.name = name;
     }
 
-    public Item getItem() {
-        return item;
+    public String getItemId() {
+        return itemId;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
     public String getModel() {
@@ -82,5 +89,19 @@ public class Model {
 
     public void setBasePercentage(Long basePercentage) {
         this.basePercentage = basePercentage;
+    }
+
+    public Model(Long id, String name, String itemId, Brand brand, String model, String spec, String label, Long basePercentage) {
+        this.id = id;
+        this.name = name;
+        this.itemId = itemId;
+        this.brand = brand;
+        this.model = model;
+        this.spec = spec;
+        this.label = label;
+        this.basePercentage = basePercentage;
+    }
+
+    public Model() {
     }
 }

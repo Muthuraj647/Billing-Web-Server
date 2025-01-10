@@ -1,15 +1,14 @@
 package com.shri.billing.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class PurchaseDto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class PurchaseDto  {
+    @JsonIgnore
     private Long id;
     private String orderId;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -18,22 +17,25 @@ public class PurchaseDto {
     private Long modelId;
     private String gradeId;
     private String imei;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date costDebitDate;
-    private Long costAmount;
-    private Long deliveryFee;
-    private Long exchangeFee;
+
+    private Float costAmount;
+
+    private Float deliveryFee;
+
+    private Float exchangeFee;
     private String trackingId;
 
     private String categoryValue;
     private String modelName;
     private String modelLabel;
     private String itemValue;
-    private String gradeValue;
 
     public PurchaseDto(Long id, String orderId, Date orderDate, String categoryId, Long modelId, String gradeId,
                        String imei, String trackingId, String categoryValue, String modelName,
-                       String modelLabel, String itemValue, String gradeValue) {
+                       String modelLabel, String itemValue) {
         this.id = id;
         this.orderId = orderId;
         this.orderDate = orderDate;
@@ -41,16 +43,11 @@ public class PurchaseDto {
         this.modelId = modelId;
         this.gradeId = gradeId;
         this.imei = imei;
-//        this.costDebitDate = costDebitDate;
-//        this.costAmount = costAmount;
-//        this.deliveryFee = deliveryFee;
-//        this.exchangeFee = exchangeFee;
         this.trackingId = trackingId;
         this.categoryValue = categoryValue;
         this.modelName = modelName;
         this.modelLabel = modelLabel;
         this.itemValue = itemValue;
-        this.gradeValue = gradeValue;
     }
 
 
@@ -118,27 +115,27 @@ public class PurchaseDto {
         this.costDebitDate = costDebitDate;
     }
 
-    public Long getCostAmount() {
+    public Float getCostAmount() {
         return costAmount;
     }
 
-    public void setCostAmount(Long costAmount) {
+    public void setCostAmount(Float costAmount) {
         this.costAmount = costAmount;
     }
 
-    public Long getDeliveryFee() {
+    public Float getDeliveryFee() {
         return deliveryFee;
     }
 
-    public void setDeliveryFee(Long deliveryFee) {
+    public void setDeliveryFee(Float deliveryFee) {
         this.deliveryFee = deliveryFee;
     }
 
-    public Long getExchangeFee() {
+    public Float getExchangeFee() {
         return exchangeFee;
     }
 
-    public void setExchangeFee(Long exchangeFee) {
+    public void setExchangeFee(Float exchangeFee) {
         this.exchangeFee = exchangeFee;
     }
 
@@ -182,11 +179,8 @@ public class PurchaseDto {
         this.itemValue = itemValue;
     }
 
-    public String getGradeValue() {
-        return gradeValue;
-    }
+   
 
-    public void setGradeValue(String gradeValue) {
-        this.gradeValue = gradeValue;
+    public PurchaseDto() {
     }
 }

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Isakki Smart Hub|Models</title>
+    <link rel="stylesheet" href="../css/purchase-style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+    .style {
+        width: 100px;
+        height: 50px;
+        font-weight: bold;
+        position: relative;
+        animation: mymove 2s;
+        animation-fill-mode: forwards;
+      }
+    
+      @keyframes mymove {
+        0%   { left: 0px; top: 0px;}
+        225%  { top: 20px; }
+        50%  { left :20px ;font-size: 20px;}
+        100% { left: 0px; top: 0px;} 
+    }
+</style>
+<body id="model">
+    <div class="wrapper">
+
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>ISAKKI sh .</p>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="../html/index.html" class="link">Dashboard</a></li>
+                    <li><a href="../html/purchase.html" class="link">Purchases</a></li>
+                    <li><a href="#" class="style">Models</a></li>
+                    <li><a href="#" class="link">More..</a></li>
+                </ul>
+            </div>
+            <div class="nav-button">
+                <i class="bx bx-user"></i>
+                <i class="bx bx-log-out"></i>
+            </div>
+            <div class="nav-menu-btn">
+                <i class="bx bxs-menu" onclick="myMenuFunction();"></i>
+            </div>
+            
+        </nav>
+
+
+        
+        
+       
+        
+        <div class="content">
+
+            <div class="content-header">
+                <a href="#">Do you want to add Models?</a>
+                <p id="totalRecords">Total Records Found: 0</p>
+            </div>
+            <div class="table">
+            <table id="purchases">
+                <thead>
+                    <!-- <th>Order Id</th>
+                    <th>Order Date</th>
+                    <th>Category</th>
+                    <th>Model</th>
+                    <th>Grade</th>
+                    <th>IMEI</th>
+                    <th>Payment Date</th>
+                    <th>Product Cost</th>
+                    <th>Delivery Charge</th>
+                    <th>Exchange Fee</th>
+                    <th>Totol Cost</th>
+                    <th>Status</th> -->
+                </thead>
+                <tbody id="tbody">
+                    
+                        <!-- <tr><td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                    </tr>
+                    <tr>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                        <td>Order</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    
+        </div>
+    
+    </div>
+
+    <script src="../javascript/scripts.js"></script>
+</body>
+</html>

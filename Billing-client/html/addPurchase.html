@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Isakki Smart Hub|Purchases</title>
+    <link rel="stylesheet" href="../css/purchase-style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body id="purchase-form" onload="loadData();">
+    <div class="wrapper">
+
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>ISAKKI sh .</p>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="../html/index.html" class="link">Dashboard</a></li>
+                    <li><a href="../html/purchase.html" class="link active">Purchases</a></li>
+                    <li><a href="../html/model.html" class="link">Models</a></li>
+                    <li><a href="#" class="link">More..</a></li>
+                </ul>
+            </div>
+            <div class="nav-button">
+                <i class="bx bx-user"></i>
+                <i class="bx bx-log-out"></i>
+            </div>
+            <div class="nav-menu-btn">
+                <i class="bx bxs-menu" onclick="myMenuFunction();"></i>
+            </div>
+            
+        </nav>
+
+
+        
+     
+       
+        
+        <div class="content form-content">
+
+            
+            <div class="content-header">
+                
+                <label for="file">Upload via csv</label><input type="file" id="csvFile" accept=".csv" />
+                <button id="convert">Upload</button>
+            </div>
+            <form id="addPurchase-form"> 
+                <div class="table">
+                    <table id="purchases">
+                        <thead>
+                            <th>Order Id</th>
+                            <th>Order Date</th>
+                            <th>Category</th>
+                            <th>Brand</th>
+                            <th>Model</th>
+                            <th>Grade</th>
+                            <th>IMEI</th>
+                            <th>Payment Date</th>
+                            <th>Product Cost</th>
+                            <th>Delivery Charge</th>
+                            <th>Exchange Fee</th>
+                            <th>Tracking ID</th>
+                            <th>Status</th>
+                        </thead>
+                        <tbody id="tbody" >
+                        
+                                <tr>
+                                    <td><input type="text" name="orderId" id="orderId" placeholder="Order123"></td>
+                                    <td><input type="datetime-local" name="orderDate" id="orderDate"></td>
+                                    <td>
+                                        <select name="category" id="category" >
+                                            <option value="0" selected id="cat-op-1">Default</option>
+                                        </select>
+                                    </td>
+
+                                    <td>
+                                        <select name="brand" id="brand" onclick="getModel();">
+                                            <option value="0" selected id="cat-op-1">Default</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="model" id="model">
+                                            
+                                            <option value="0" selected id="mo-opt-1">Default</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" name="grade" id="grade" placeholder="A1"></td>
+                                    <td><input type="text" name="imei" id="imei" placeholder="1234567890"></td>
+                                    <td><input type="datetime-local" name="paymentDate" id="paymentDate" placeholder="2025/01/01 00:00:00"></td>
+                                    <td><input type="number" name="productCost" id="productCost" placeholder="10000.25"></td>
+                                    <td><input type="number" name="deliveryFee" id="deliveryFee" placeholder="155.50"></td>
+                                    <td><input type="number" name="exchangeFee" id="exchangeFee" placeholder="2500.35"></td>
+                                    <td><input type="text" name="trackingId" id="trackingId" placeholder="12345"></td>
+                                    <td><a href="#" title="Add Row">
+                                        <i class='bx bx-list-plus bx-icon'></i>
+                                    </a>
+                                    <a href="#" title="Remove Row">
+                                        <i class='bx bx-list-minus bx-icon' ></i>
+                                    </a>
+                                </td>
+                                </tr>
+                            
+                        
+                        </tbody>
+                    </table>
+            
+                </div>
+                <div class="add-p-btn">
+                     <input type="submit">
+                </div>
+            </form> 
+        </div>
+    
+    </div>
+
+    <script>
+        
+        async function loadData() {
+           await getOption('category')
+           await getOption('brand')
+        }
+        
+
+
+        async function getOption(key){
+            console.log(key)
+            categoryTag = document.getElementById(key)
+           
+            let response = await fetch('http://127.0.0.1:8081/conf/look-up?groupNames='+key)
+            if(response.ok){
+                let data = await response.json()
+
+                data.forEach(element => {
+                    let optionTag = document.createElement('option')
+                    optionTag.innerText = element.value;
+                    optionTag.setAttribute('value',element.id)
+                    categoryTag.appendChild(optionTag)
+                    
+                });
+            }
+           
+            
+        }
+
+
+        async function getModel() {
+
+            let searchKey = ''
+            let brandname = document.getElementById('brand')
+            let brandId = brandname.value;
+            console.log("SearchKey:"+searchKey+"\n"+"BrandID:"+brandId)
+            modelTag = document.getElementById('model')
+           modelTag.innerText=""
+            let response = await fetch('http://127.0.0.1:8081/model/models?brand='+brandId+'&search='+searchKey)
+
+            if(response.ok){
+                let data = await response.json()
+                console.log(data)
+                data.forEach(element=>{
+                    let optionTag = document.createElement('option')
+                    optionTag.innerText = element.label;
+                    optionTag.setAttribute('value',element.id)
+                    modelTag.appendChild(optionTag)
+                })
+            }
+
+        }
+        
+    </script>
+    <script src="../javascript/scripts.js"></script>
+</body>
+</html>

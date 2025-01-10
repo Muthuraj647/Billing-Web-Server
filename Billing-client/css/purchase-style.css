@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: url("../html/1_QqUKlK0hPEjyo8LpBFWxbA.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+}
+
+.nav{
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    
+    line-height: 100px;
+    background: linear-gradient(rgba(189, 189, 184, 0.6), transparent);
+    
+}
+
+.nav-logo p{
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.nav-menu ul{
+    display: flex;
+}
+
+.nav-menu ul li{
+    list-style-type: none;
+}
+
+
+
+.nav-menu ul li .link{
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+    padding-bottom: 15px;
+    margin: 0 25px;
+    z-index: 100;
+}
+
+.link:hover, .active{
+    border-bottom: 2px solid #fff;
+}
+
+.nav-button .btn{
+    width: 130px;
+    height: 40px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: .5s ease;
+
+}
+
+.nav-button i{
+    font-size: 20px;
+    color: #fff;
+}
+
+.purchase-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    position: relative;
+}
+
+.content{
+    color: #fff;
+    background: rgba(150, 150, 150, 0.7);
+    width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 100px;
+}
+
+.content-header{
+    padding: 10px;
+    background: rgba(190, 190, 190, 0.7);
+    text-align: left;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-header a{
+    color: #fff;
+    
+}
+#purchases{
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+.table{
+    background: rgba(190, 190, 190, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#purchases thead th,#purchases tbody td{
+   
+    padding: 8px;
+}
+#purchases thead th{
+    text-align: left;
+    background-color: #04AA6D;
+    
+}
+
+
+.add-p-btn{
+    text-align: center;
+}
+.add-p-btn input{
+    width: 100px;
+    height: 30px;
+    margin: 20px 0;
+    border-radius: 7px;
+    border: none;
+}
+
+.add-p-btn input:hover{
+    background-color: #04AA6D;
+    color: #fff;
+}
+
+.form-content{
+
+    width: 100%;
+
+}
+
+
+input{
+    width: 80%;
+}
+
+#orderDate,#paymentDate{
+    width: 100%;
+}
+
+#productCost,#deliveryFee,#exchangeFee{
+    width: 50%;
+}
+
+.bx-icon{
+    font-size: 23px;
+}
+
+/*
+backup
+.nav{
+    height: 100%;
+    line-height: 100px;
+}
+
+*/
